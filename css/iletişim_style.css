@@ -119,3 +119,92 @@ hr{
     margin-top: -1.7%;
     margin-left: 60%;
 }
+
+#içerik{
+    height: 545px;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#dış{
+    border-radius: 5px;
+    background-color: rgb(231, 231, 231);
+    height: 95%;
+    width: 45%;
+    margin: 2%;
+    border: #112c66 1px solid;
+}
+
+#iç{
+    height: 45%;
+    width: 95%;
+    margin: 2.5%;
+    display: flex;
+    align-items: center;
+}
+
+#iç2{
+    height: 90%;
+    width: 30%;
+    margin: 2.5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#iç2 img{
+    width: 100%;
+}
+
+#iç3{
+    height: 90%;
+    width: 70%;
+    margin: 2.5%;
+    font-size: 23px;
+    line-height: 2.2;
+}
+
+#iç3 p{
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+#iç4{
+    background-color: chartreuse;
+    border: #112c66 1px solid;
+    height: 90%;
+    width: 45%;
+    margin: 2.5%;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+#iç4 p{
+    font-family: 'Noto Sans', sans-serif;
+    color: #000;
+}
+
+#iç4 a{
+    font-family: 'Noto Sans', sans-serif;
+    color: #000;
+    text-decoration: none;
+    font-size: 24px;
+    line-height: 2.75;
+}
+
+#iç4 a:hover {
+    text-decoration: underline;
+}
+
+.icons{
+    margin: 10px;
+    margin-left: 20px;
+}
