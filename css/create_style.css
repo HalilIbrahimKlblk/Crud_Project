@@ -119,3 +119,84 @@ hr{
     margin-top: -1.7%;
     margin-left: 60%;
 }
+
+#içerik{
+    margin: 2%;
+    padding: 10px;
+    height: 525px;
+    display: flex;
+    align-items: center;
+    justify-content: left; 
+}
+
+#sol{
+    border: #112c66 2px solid;
+    background-color: rgb(190, 190, 190);
+    height: 475px;
+    width: 30%;
+    margin-left: 50px;
+    border-radius: 2%;
+}
+
+#sağ{
+    border: #112c66 2px solid;
+    height: 475px;
+    width: 60%;
+    margin-left: 100px;
+    max-width: 100%;
+    border-radius: 1%;
+    margin-right: 50px;
+}
+
+input{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 5%;
+    margin-bottom: 2%;
+    padding: 10px 30px;
+    max-width: 100%;
+    width: 70%;
+    font-size: 18px;
+    color: rgb(0, 0, 0);
+    border: #112c66 2px solid;
+    border-radius: 5px;
+}
+
+button{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 5%;
+    font-size: 18px;
+    padding: 10px 30px;
+    width: 50%;
+    border: #112c66 2px solid;
+    border-radius: 5px;
+    background-color: #112c66;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 5%;
+    font-size: 18px;
+    padding: 10px 30px;
+    width: 50%;
+    border: #112c66 2px solid;
+    border-radius: 5px;
+    background-color: #22438C;
+    color: white;
+    cursor: pointer;
+}
+
+#sağ h1{
+    color: #112c66;
+    text-align: center;
+    margin: 1%;
+    font-size: 30px;
+}
+
+#sağ hr{
+    height: 2px;
+}
