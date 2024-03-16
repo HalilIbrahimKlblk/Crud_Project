@@ -70,52 +70,6 @@ ul a{
     font-weight: bold;
 }
 
-#içerik1{
-    width: 100%;
-    height: 600px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#sol{
-    width: 45%;
-    height: 500px;
-    margin: 2.5%;
-    display: inline-block;
-    align-items: center;
-}
-
-#sol img{
-    width: 40%;
-    height: auto;
-    margin-left: 30%;
-}
-
-#sol p{
-    margin-top: 30px;
-    margin-left: 10px;
-    color: #000;
-    font-size: 22.5px;
-    font-family: 'Open-Sans',sans-serif;
-    line-height: 1.5;
-}
-
-#sağ{
-    width: 45%;
-    height: 500px;
-    margin: 2.5%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#sağ img{
-    width: 100%;
-    height: auto;
-    opacity: 1;
-}
-
 hr{
     margin-top: 0.5%;
     background-color: #112c66;
@@ -166,4 +120,91 @@ hr{
     margin-left: 60%;
 }
 
+#içerik{
+    height: 545px;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+#dış{
+    border-radius: 5px;
+    background-color: rgb(231, 231, 231);
+    height: 95%;
+    width: 45%;
+    margin: 2%;
+    border: #112c66 1px solid;
+}
+
+#iç{
+    height: 45%;
+    width: 95%;
+    margin: 2.5%;
+    display: flex;
+    align-items: center;
+}
+
+#iç2{
+    height: 90%;
+    width: 30%;
+    margin: 2.5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#iç2 img{
+    width: 100%;
+}
+
+#iç3{
+    height: 90%;
+    width: 70%;
+    margin: 2.5%;
+    font-size: 23px;
+    line-height: 2.2;
+}
+
+#iç3 p{
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+#iç4{
+    background-color: chartreuse;
+    border: #112c66 1px solid;
+    height: 90%;
+    width: 45%;
+    margin: 2.5%;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+#iç4 p{
+    font-family: 'Noto Sans', sans-serif;
+    color: #000;
+}
+
+#iç4 a{
+    font-family: 'Noto Sans', sans-serif;
+    color: #000;
+    text-decoration: none;
+    font-size: 24px;
+    line-height: 2.75;
+}
+
+#iç4 a:hover {
+    text-decoration: underline;
+}
+
+.icons{
+    margin: 10px;
+    margin-left: 20px;
+}
