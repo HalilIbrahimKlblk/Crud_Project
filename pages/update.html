@@ -34,8 +34,8 @@
                     <input class="input" type="number" id="id" placeholder="ID"><br>
                     <input class="input" type="text" id="isim" placeholder="Ad"><br>
                     <input class="input" type="text" id="soyisim" placeholder="Soyad"><br>
-                    <input class="input" type="text" id="bölüm" placeholder="Bölüm"><br>
-                    <input class="input" type="text" id="sınıf" placeholder="Sınıf"><br>
+                    <input class="input" type="email" id="mail" placeholder="E-Mail"><br>
+                    <input class="input" type="text" id="site" placeholder="Web Sitesi"><br>
                     <button>Güncelle</button>
                 </div>
                 <div id="sağ">
@@ -45,8 +45,28 @@
                         <p>Please enter your registered ID value into the ID box and fill in all your information again. Finally, click on the <b>'Güncelle'</b> button to update your user information.</p>
                     </div>
                     <div id="alt">
-                        <h1>Updated Users</h1>
+                        <h1>Current Users</h1>
                         <hr><br>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Ad</th>
+                                    <th>Soyad</th>
+                                    <th>E-Mail</th>
+                                    <th>Web Sitesi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="userTable">
+                                <!--<tr>
+                                    <td>ID</td>
+                                    <td>Ad</td>
+                                    <td>Soyad</td>
+                                    <td>Bölüm</td>
+                                    <td>Sınıf</td>
+                                </tr>-->
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -61,5 +81,6 @@
                 <a class="son3" href=""><i class="fa-solid fa-earth-asia"></i>Turkey / Türkçe</a>
             </div>
         </footer>
+        <script src="../script/update_custom.js"> </script>
     </body>
 </html>

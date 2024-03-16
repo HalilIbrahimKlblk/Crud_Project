@@ -209,6 +209,7 @@ button:hover{
     height: 58%;
     border: #112c66 2px solid;
     border-radius: 5px;
+    overflow: auto;
 }
 
 #alt h1{
@@ -237,3 +238,33 @@ button:hover{
     font-size: 22px;
     line-height: 1.5;
 }
+
+table{
+    margin-left: 1%;
+    margin-right: 1%;
+    border: #112c66 1px solid;
+    width: 98%;
+    height: 30px;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+}
+
+  
+table td, table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  
+table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #22438C;
+    color: white;
+  }
+
+table  tr:nth-child(even){background-color: #f2f2f2;}
+
+table  tr:hover {background-color: #ddd;}

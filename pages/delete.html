@@ -33,12 +33,32 @@
                 <div id="üst">
                     <input class="input" type="number" id="id" placeholder="ID"><br>
                     <input class="input" type="text" id="isim" placeholder="Ad"><br>
-                    <input class="input" type="text" id="SOYisim" placeholder="Soyad"><br>
-                    <button>Sil</button>
+                    <input class="input" type="text" id="soyisim" placeholder="Soyad"><br>
+                    <button onclick="deleteUser(id)">Sil</button>
                 </div>
                 <div id="alt">
-                    <h1>Deleted User</h1>
+                    <h1>Current Users</h1>
                     <hr><br>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Ad</th>
+                                <th>Soyad</th>
+                                <th>E-Mail</th>
+                                <th>Web Sitesi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="userTable">
+                            <!--<tr>
+                                <td>ID</td>
+                                <td>Ad</td>
+                                <td>Soyad</td>
+                                <td>Bölüm</td>
+                                <td>Sınıf</td>
+                            </tr>-->
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </section>
@@ -52,5 +72,6 @@
                 <a class="son3" href=""><i class="fa-solid fa-earth-asia"></i>Turkey / Türkçe</a>
             </div>
         </footer>
+        <script src="../script/delete_custom.js"> </script>
     </body>
 </html>
