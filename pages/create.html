@@ -34,13 +34,33 @@
                     <input class="input" type="number" id="id" placeholder="ID"><br>
                     <input class="input" type="text" id="isim" placeholder="Ad"><br>
                     <input class="input" type="text" id="soyisim" placeholder="Soyad"><br>
-                    <input class="input" type="text" id="bölüm" placeholder="Bölüm"><br>
-                    <input class="input" type="text" id="sınıf" placeholder="Sınıf"><br>
-                    <button>Gönder</button>
+                    <input class="input" type="email" id="mail" placeholder="E-Mail"><br>
+                    <input class="input" type="text" id="site" placeholder="Web Sitesi"><br>
+                    <button onclick="createUser()">Gönder</button>
                 </div>
                 <div id="sağ">
                     <h1>Created Users</h1>
                     <hr><br>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Ad</th>
+                                <th>Soyad</th>
+                                <th>E-Mail</th>
+                                <th>Web Sitesi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="userTable">
+                            <!--<tr>
+                                <td>ID</td>
+                                <td>Ad</td>
+                                <td>Soyad</td>
+                                <td>Bölüm</td>
+                                <td>Sınıf</td>
+                            </tr>-->
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </section>
@@ -54,5 +74,6 @@
                 <a class="son3" href=""><i class="fa-solid fa-earth-asia"></i>Turkey / Türkçe</a>
             </div>
         </footer>
+        <script src="../script/create_custom.js"> </script>
     </body>
 </html>
