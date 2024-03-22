@@ -66,8 +66,16 @@ ul a{
 }
 
 .json{
-    color: gray;
+    color: rgb(155, 155, 155);
     font-weight: bold;
+    font-family: Akaya Kanadaka;
+    font-size: 42px;
+}
+
+.json2{
+    font-weight: bold;
+    font-family: Akaya Kanadaka;
+    font-size: 42px;
 }
 
 #içerik1{
