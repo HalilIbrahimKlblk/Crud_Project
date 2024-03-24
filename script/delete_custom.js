@@ -70,15 +70,13 @@ function deleteUser() {
 }
 
 function removeFromTable(id) {
-    // Tablodan kullanıcıyı kaldır
     const tableBody = document.getElementById("userTable");
     const rows = tableBody.getElementsByTagName("tr");
 
-    // Tablodaki her bir satırı kontrol et
     for (let i = 0; i < rows.length; i++) {
         const rowId = rows[i].getElementsByTagName("td")[0].textContent;
         if (rowId == id) {
-            tableBody.removeChild(rows[i]); // Kullanıcıyı tablodan kaldır
+            tableBody.removeChild(rows[i]); 
             break;
         }
     }
