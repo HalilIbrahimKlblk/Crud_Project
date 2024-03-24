@@ -45,6 +45,26 @@ function showNotification(message) {
 function deleteUser() {
     const id = document.getElementById('id').value;
 
+    //ID kontrolü
+    if (isNaN(id) || id <= 0) {
+        alert("Geçersiz ID!");
+        return;
+    }
+
+    if (!isValidName(isim)) {
+        alert("Lütfen geçerli bir isim girin.");
+        return;
+    }
+    
+    if (!isValidName(soyisim)) {
+        alert("Lütfen geçerli bir soyisim girin.");
+        return;
+    }
+    
+    function isValidName(name) {
+        return /^[a-zA-ZğüşıöçĞÜŞİÖÇ\s']{2,20}$/.test(name);
+    }
+
     fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
             method: "DELETE",
             headers: {
