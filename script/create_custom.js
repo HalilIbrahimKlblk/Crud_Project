@@ -39,7 +39,6 @@ const table = document.getElementById("userTable");
         }, 3000);
     }
 
-    var existingIds = [];
     function createUser() {
         let id = document.getElementById("id").value.trim();
         let isim = document.getElementById("isim").value.trim();

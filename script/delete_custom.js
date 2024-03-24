@@ -23,57 +23,24 @@ function getUserList() {
 
 getUserList();
 
-function createUser() {
-    let id = document.getElementById("id").value.trim();
-    let isim = document.getElementById("isim").value.trim();
-    let soyisim = document.getElementById("soyisim").value.trim();
-    let mail = document.getElementById("mail").value.trim();
-    let site = document.getElementById("site").value.trim();
+function showNotification(message) {
+    var notification = document.createElement('div');
+    notification.textContent = message;
+    notification.style.position = 'fixed';
+    notification.style.top = '14.5%';
+    notification.style.left = '50%';
+    notification.style.transform = 'translate(-85.5%, -50%)';
+    notification.style.backgroundColor = '#333';
+    notification.style.color = '#fff';
+    notification.style.padding = '10px';
+    notification.style.borderRadius = '5px';
+    notification.style.zIndex = '9999';
+    document.body.appendChild(notification);
 
-    if (!id || !isim || !soyisim || !mail || !site) {
-        console.log("Tüm alanları doldurun!");
-        return;
-    }
-
-    let data = {
-        id: id,
-        isim: isim,
-        soyisim: soyisim,
-        mail: mail,
-        site: site
-    };
-
-    fetch("https://jsonplaceholder.typicode.com/users", {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-            table.innerHTML +=
-                '<tr>' +
-                '<td>' + data.id + '</td>' +
-                '<td>' + data.isim + '</td>' +
-                '<td>' + data.soyisim + '</td>' +
-                '<td>' + data.mail + '</td>' +
-                '<td>' + data.site + '</td>' +
-                '</tr>';
-        })
-        .catch((error) => {
-            console.log("Hata", error);
-        });
-
-        document.getElementById("id").value = "";
-        document.getElementById("isim").value = "";
-        document.getElementById("soyisim").value = "";
-        document.getElementById("mail").value = "";
-        document.getElementById("site").value = "";
+    setTimeout(function() {
+        document.body.removeChild(notification);
+    }, 3000);
 }
-
-createUser();
 
 function deleteUser() {
     const id = document.getElementById('id').value;
@@ -92,6 +59,8 @@ function deleteUser() {
         })
         .then(data => {
             console.log("Kullanıcı Silindi", data);
+            showNotification("Kullanıcı silindi.");
+            removeFromTable(id);
         })
         .catch((error) => console.log(error));
 
@@ -100,4 +69,17 @@ function deleteUser() {
         document.getElementById("soyisim").value = "";
 }
 
-deleteUser();
+function removeFromTable(id) {
+    // Tablodan kullanıcıyı kaldır
+    const tableBody = document.getElementById("userTable");
+    const rows = tableBody.getElementsByTagName("tr");
+
+    // Tablodaki her bir satırı kontrol et
+    for (let i = 0; i < rows.length; i++) {
+        const rowId = rows[i].getElementsByTagName("td")[0].textContent;
+        if (rowId == id) {
+            tableBody.removeChild(rows[i]); // Kullanıcıyı tablodan kaldır
+            break;
+        }
+    }
+}
