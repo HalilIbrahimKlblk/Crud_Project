@@ -4,19 +4,19 @@
     font-family: 'Open-Sans',sans-serif;
 }
 
-ul{
+nav ul{
     list-style: none;
     background: #22438C;
     text-align: right;
 }
 
-ul li{
+nav ul li{
     display: inline-block;
     position: relative;
 }
 
-ul li a{
-    width: 165px;
+nav ul li a{
+    width: 175px;
     display: block;
     padding: 25px 25px;
     color: #fff;
@@ -26,35 +26,16 @@ ul li a{
     margin: 0;
 }
 
-ul li ul.dropdown li {
-    display: block;
+nav ul li a i{
+    margin-right: 15px;
 }
 
-
-ul li ul.dropdown {
-    width: 100%;
-    background: #22438C;
-    position: absolute;
-    z-index: 999;
-    display: none;
-}
-
-ul li a:hover{
+nav ul li a:hover{
     background-color: #112c66;
     margin: 0px;
 }
 
-ul li:hover ul.dropdown{
-    display: block;
-}
-
-ul img{
-    height: 100px;
-    float: left;
-    cursor: pointer;
-}
-
-ul a{
+nav ul a{
     font-size: 35px;
     float: left;
     cursor: pointer;
@@ -126,43 +107,105 @@ hr{
 #değer15{
     margin-top: -1.7%;
     margin-left: 60%;
+    margin-bottom: 8px;
+}
+
+h1{
+    text-align: center;
+    font-size: 30px;
+    margin: 2%;
+    padding: 10px;
 }
 
 #içerik{
+    text-align: left;
+    font-size: 25px;
+    margin: 2%;
+    padding: 10px;
+    line-height: 1.2;
+}
+
+section h1{
+    font-family: 'Noto Sans', sans-serif;
+}
+
+#içerik p{
+    font-family: 'Noto Sans', sans-serif;
+}
+
+#içerik2{
+    height: 200px;
+    margin: 2%;
+    padding: 10px;
+}
+
+#foto{
+    float: right;
+    width: 15%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#foto img{
+    height: 100%;
+}
+
+#liste{
+    float: left;
+    width: 80%;
+    height: 100%;
+    margin-left: 2%;
+}
+
+#liste ul{
+    max-width: 100%;
+    font-size: 25px;
+    font-family: 'Noto Sans', sans-serif;
+    line-height: 1.4;
+    list-style-type: circle;
+}
+
+#liste li{
+    font-family: 'Noto Sans', sans-serif;
+}    
+
+#içerik{
+    margin-top: 0%;
     margin: 2%;
     padding: 10px;
     height: 525px;
-    display: flex;
-    align-items: center;
-    justify-content: left; 
 }
 
-#sol{
-    border: #112c66 2px solid;
+#üst{
     background-color: rgb(190, 190, 190);
-    height: 475px;
-    width: 30%;
-    margin-left: 50px;
-    border-radius: 2%;
+    border: #112c66 2px solid;
+    height: 18%;
+    width: 86%;
+    margin-left: 7%;
+    margin-top: 0%;
+    border-radius: 5px;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
 }
 
-#sağ{
-    height: 475px;
-    width: 60%;
-    margin-left: 100px;
-    max-width: 100%;
-    border-radius: 1%;
-    margin-right: 50px;
+#alt{
+    border: #112c66 2px solid;
+    height: 72%;
+    width: 96%;
+    margin: 2%;
+    margin-top: 3%;
+    border-radius: 5px;
+    overflow: auto;
 }
 
 input{
-    margin-left: 5%;
     margin-right: 5%;
-    margin-top: 5%;
-    margin-bottom: 2%;
     padding: 10px 30px;
     max-width: 100%;
-    width: 70%;
+    width: 25%;
     font-size: 18px;
     color: rgb(0, 0, 0);
     border: #112c66 2px solid;
@@ -170,12 +213,9 @@ input{
 }
 
 button{
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-top: 5%;
     font-size: 18px;
     padding: 10px 30px;
-    width: 50%;
+    width: 20%;
     border: #112c66 2px solid;
     border-radius: 5px;
     background-color: #112c66;
@@ -184,40 +224,14 @@ button{
 }
 
 button:hover{
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-top: 5%;
     font-size: 18px;
     padding: 10px 30px;
-    width: 50%;
+    width: 20%;
     border: #112c66 2px solid;
     border-radius: 5px;
     background-color: #22438C;
     color: white;
     cursor: pointer;
-}
-
-#sağ {
-    text-align: center;
-    margin-left: 50px;
-}
-
-#üst{
-    width: 96%;
-    margin: 2%;
-    margin-top: 0;
-    height: 37%;
-    border-radius: 5px;
-    border: #112c66 2px solid;
-}
-
-#alt{
-    width: 96%;
-    margin: 2%;
-    height: 58%;
-    border: #112c66 2px solid;
-    border-radius: 5px;
-    overflow: auto;
 }
 
 #alt h1{
@@ -229,22 +243,6 @@ button:hover{
 
 #alt hr{
     height: 2px;
-}
-
-#üst h1{
-    color: #112c66;
-    text-align: center;
-    margin: 1%;
-    font-size: 30px;
-}
-
-#üst hr{
-    height: 1px;
-}
-
-#üst p{
-    font-size: 22px;
-    line-height: 1.5;
 }
 
 table{

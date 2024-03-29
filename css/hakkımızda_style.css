@@ -16,7 +16,7 @@ nav ul li{
 }
 
 nav ul li a{
-    width: 165px;
+    width: 175px;
     display: block;
     padding: 25px 25px;
     color: #fff;
@@ -26,32 +26,13 @@ nav ul li a{
     margin: 0;
 }
 
-nav ul li ul.dropdown li {
-    display: block;
-}
-
-
-nav ul li ul.dropdown {
-    width: 100%;
-    background: #22438C;
-    position: absolute;
-    z-index: 999;
-    display: none;
+nav ul li a i{
+    margin-right: 15px;
 }
 
 nav ul li a:hover{
     background-color: #112c66;
     margin: 0px;
-}
-
-nav ul li:hover ul.dropdown{
-    display: block;
-}
-
-nav ul img{
-    height: 100px;
-    float: left;
-    cursor: pointer;
 }
 
 nav ul a{

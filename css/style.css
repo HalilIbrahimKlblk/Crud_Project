@@ -16,7 +16,7 @@ ul li{
 }
 
 ul li a{
-    width: 165px;
+    width: 175px;
     display: block;
     padding: 25px 25px;
     color: #fff;
@@ -26,32 +26,13 @@ ul li a{
     margin: 0;
 }
 
-ul li ul.dropdown li {
-    display: block;
-}
-
-
-ul li ul.dropdown {
-    width: 100%;
-    background: #22438C;
-    position: absolute;
-    z-index: 999;
-    display: none;
+ul li a i{
+    margin-right: 15px;
 }
 
 ul li a:hover{
     background-color: #112c66;
     margin: 0px;
-}
-
-ul li:hover ul.dropdown{
-    display: block;
-}
-
-ul img{
-    height: 100px;
-    float: left;
-    cursor: pointer;
 }
 
 ul a{
@@ -174,4 +155,138 @@ hr{
     margin-left: 60%;
 }
 
+.sabit-dugme {
+    position: fixed; 
+    bottom: 50px; 
+    right: 20px; 
+    background-color: #22438C;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .sabit-dugme:hover {
+    background-color: #112c66;
+  }
 
+  .kayit-ol-yazisi {
+    position: fixed;
+    bottom: 90px; 
+    right: 20px; 
+    color: #112c66;
+    font-size: 15px;
+    display: none;
+  }
+  
+  .sabit-dugme:hover + .kayit-ol-yazisi {
+    display: block; 
+  }
+
+#kayıt{
+    width: 95%;
+    margin-left: 2.5%;
+    height: 600px;
+    display: flex;
+    align-items: center;
+}
+
+#sol-kayıt{
+    width: 30%;
+    margin-left: 2.5%;
+    height: 550px;
+    display: flex;
+    align-items: center;
+}
+
+#sağ-kayıt{
+    width: 60%;
+    margin-left: 5%;
+    height: 498px;
+    overflow: auto;
+    margin-bottom: 10px;
+}
+
+
+#sol-kayıt-alt{
+    border: #112c66 2px solid;
+    background-color: rgb(190, 190, 190);
+    height: 450px;
+    margin-left: 5%;
+    width: 90%;
+    border-radius: 2%;
+}
+
+input{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 7%;
+    margin-bottom: 2%;
+    padding: 10px 30px;
+    max-width: 100%;
+    width: 70%;
+    font-size: 18px;
+    color: rgb(0, 0, 0);
+    border: #112c66 2px solid;
+    border-radius: 5px;
+}
+
+button{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 10%;
+    font-size: 18px;
+    padding: 10px 30px;
+    width: 50%;
+    border: #112c66 2px solid;
+    border-radius: 5px;
+    background-color: #112c66;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 10%;
+    font-size: 18px;
+    padding: 10px 30px;
+    width: 50%;
+    border: #112c66 2px solid;
+    border-radius: 5px;
+    background-color: #22438C;
+    color: white;
+    cursor: pointer;
+}
+
+table{
+    margin-left: 1%;
+    margin-right: 1%;
+    border: #112c66 1px solid;
+    width: 98%;
+    height: 30px;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+}
+
+  
+table td, table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  
+table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #22438C;
+    color: white;
+  }
+
+table  tr:nth-child(even){background-color: #f2f2f2;}
+
+table  tr:hover {background-color: #ddd;}

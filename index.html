@@ -17,18 +17,12 @@
     <body>
         <nav>
             <ul>
-                <a href="../index.html"><span class="json">{</span><span class="json2">json</span><span class="json">:</span><api class="json2">api</span><span class="json">}</span></a>
+                <a href="/index.html"><span class="json">{</span><span class="json2">json</span><span class="json">:</span><api class="json2">api</span><span class="json">}</span></a>
                 <li>
-                    <a href="#">Kayıt İşlemleri</a>
-                    <ul class="dropdown">
-                        <li><a href="pages/create.html">Kayıt Ol</a></li>
-                        <li><a href="pages/update.html">Kayıt Güncelle</a></li>
-                        <li><a href="pages/read.html">Kayıt Sorgula</a></li>
-                        <li><a href="pages/delete.html">Kayıt Sil</a></li>
-                    </ul>
+                    <a href="pages/hesabım.html"><i class="fa-solid fa-user"></i>Hesabım</a>
                 </li>
-                <li><a href="pages/hakkımızda.html">Hakkımızda</a></li>
-                <li><a href="pages/iletisim.html">İletişim</a></li>
+                <li><a href="pages/hakkımızda.html"><i class="fa-solid fa-circle-info"></i></i>Hakkımızda</a></li>
+                <li><a href="pages/iletisim.html"><i class="fa-solid fa-phone"></i>İletişim</a></li>
             </ul>
         </nav>
         <section>
@@ -43,6 +37,30 @@
                 </div>
             </div>
         </section>
+        <a href="#kayıt" class="sabit-dugme"><i class="fa-solid fa-plus"></i></a>
+        <div id="kayitOlYazisi" class="kayit-ol-yazisi">Kayıt Ol</div>
+        <section id="kayıt">
+            <div id="sol-kayıt">
+                <div id="sol-kayıt-alt">
+                    <input class="input" type="text" id="isim" placeholder="Ad"><br>
+                    <input class="input" type="text" id="soyisim" placeholder="Soyad"><br>
+                    <input class="input" type="email" id="mail" placeholder="E-Mail"><br>
+                    <input class="input" type="text" id="site" placeholder="Web Sitesi"><br>
+                    <button onclick="createUser()">Kayıt Ol</button>
+                </div>
+            </div>
+            <div id="sağ-kayıt">
+                <table id="userTable">
+                    <tr>
+                        <th>ID</th>
+                        <th>Ad</th>
+                        <th>Soyad</th>
+                        <th>E-Mail</th>
+                        <th>Web Sitesi</th>
+                    </tr>
+                </table>
+            </div>
+        </section>
         <footer>
             <hr>
             <p id="hak">Copyright © 2024 Micro-Star INT'L CO. LTD. Tüm hakları saklıdır.</p>
@@ -53,5 +71,6 @@
                 <a class="son3" href=""><i class="fa-solid fa-earth-asia"></i>Turkey / Türkçe</a>
             </div>
         </footer>
+        <script src="script/create_custom.js"> </script>
     </body>
 </html>
