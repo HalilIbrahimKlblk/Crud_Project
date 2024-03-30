@@ -175,25 +175,36 @@ function updateUser(userId) {
     localStorage.setItem("user_" + userId, JSON.stringify(selectedUser));
 }
 
+function deleteUserFromLocalStorage(userId) {
+    let storedUsers = JSON.parse(localStorage.getItem("users"));
+    if (storedUsers) {
+        // Kullanıcıyı bul ve listeden kaldır
+        storedUsers = storedUsers.filter(user => user.id !== userId);
+        // Güncellenmiş kullanıcı listesini localStorage'a geri kaydet
+        localStorage.setItem("users", JSON.stringify(storedUsers));
+    }
+}
+
 function deleteUser(userId) {
     fetch(`https://jsonplaceholder.typicode.com/users/${userId}`, {
-            method: "DELETE",
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('HTTP error, status = ' + response.status);
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log("Kullanıcı Silindi", data);
-            showNotification("Kullanıcı silindi.");
-            removeFromTable(userId);
-        })
-        .catch((error) => console.log(error));
+        method: "DELETE",
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('HTTP error, status = ' + response.status);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log("Kullanıcı Silindi", data);
+        showNotification("Kullanıcı silindi.");
+        removeFromTable(userId);
+        deleteUserFromLocalStorage(userId); 
+    })
+    .catch((error) => console.log(error));
 }
 
 function removeFromTable(userId) {
