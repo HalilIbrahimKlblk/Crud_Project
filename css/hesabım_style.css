@@ -274,3 +274,37 @@ table th {
 table  tr:nth-child(even){background-color: #f2f2f2;}
 
 table  tr:hover {background-color: #ddd;}
+
+td .button-red {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    font-weight: bold;
+}
+
+td .button-red:hover {
+    background-color: rgb(191, 0, 0);
+}
+
+td .button-yellow {
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    font-weight: bold;
+}
+
+td .button-yellow:hover {
+    background-color: rgb(191, 124, 0);
+}
+
+#ort{
+    text-align: center;
+}

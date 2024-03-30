@@ -30,7 +30,7 @@
                 <div id="üst">
                     <input class="input" type="text" id="isim" placeholder="Ad"><br>
                     <input class="input" type="email" id="mail" placeholder="E-Mail"><br>
-                    <button onclick="searchUser()">Giriş Yap</button>
+                    <button onclick="searchUserByEmailAndName()">Giriş Yap</button>
                 </div>
                 <div id="alt">
                     <h1>User</h1>
@@ -43,6 +43,8 @@
                                 <th>Soyad</th>
                                 <th>E-Mail</th>
                                 <th>Web Sitesi</th>
+                                <th id="ort">Güncelle</th>
+                                <th id="ort">Sil</th>
                             </tr>
                         </thead>
                         <tbody id="userTable">
@@ -52,6 +54,8 @@
                                 <td>Soyad</td>
                                 <td>Bölüm</td>
                                 <td>Sınıf</td>
+                                <td>Güncelle</td>
+                                <td>Sil</td>
                             </tr>-->
                         </tbody>
                     </table>
@@ -68,6 +72,6 @@
                 <a class="son3" href=""><i class="fa-solid fa-earth-asia"></i>Turkey / Türkçe</a>
             </div>
         </footer>
-        <script src="script/create_custom.js"> </script>
+        <script src="../script/read_custom.js"> </script>
     </body>
 </html>
