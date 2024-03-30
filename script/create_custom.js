@@ -22,25 +22,6 @@ function saveUsers() {
     localStorage.setItem("users", JSON.stringify(users));
 }
 
-function showNotification(message) {
-    var notification = document.createElement('div');
-    notification.textContent = message;
-    notification.style.position = 'fixed';
-    notification.style.top = '20%';
-    notification.style.left = '22%';
-    notification.style.transform = 'translate(-78%, -80%)';
-    notification.style.backgroundColor = '#333';
-    notification.style.color = '#fff';
-    notification.style.padding = '10px';
-    notification.style.borderRadius = '5px';
-    notification.style.zIndex = '9999';
-    document.body.appendChild(notification);
-
-    setTimeout(function () {
-        document.body.removeChild(notification);
-    }, 3000);
-}
-
 function createUser() {
     let isim = document.getElementById("isim").value.trim();
     let soyisim = document.getElementById("soyisim").value.trim();
@@ -92,7 +73,7 @@ function createUser() {
     users.push(user);
     saveUsers();
     renderUser(user);
-    showNotification("Kullanıcı oluşturuldu.");
+    alert("Kullanıcı oluşturuldu.");
 
     document.getElementById("isim").value = "";
     document.getElementById("soyisim").value = "";
