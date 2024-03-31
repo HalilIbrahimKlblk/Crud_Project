@@ -117,10 +117,6 @@ window.onload = function () {
     }
 };
 
-window.onload = function () {
-    getUserList();
-};
-
 function confirmUpdateUser(userId) {
     // Güncelleme işlemini onayla
     if (confirm("Kullanıcı bilgilerini güncellemek istediğinize emin misiniz?")) {
@@ -204,9 +200,13 @@ function updateUser(userId) {
             break;
         }
     }
-
+    
     // Güncellenmiş kullanıcı bilgilerini local storage'a kaydet
     localStorage.setItem("user_" + userId, JSON.stringify(selectedUser));
+    
+    // Kullanıcı listesini güncelleyin ve yerel depolamaya kaydedin
+    users = users.map(user => user.id === userId ? selectedUser : user);
+    saveUsers();
 }
 
 function confirmDeleteUser(userId) {
