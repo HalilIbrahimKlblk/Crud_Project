@@ -18,27 +18,10 @@
         <nav>
             <ul>
                 <a href="index.html"><span class="json">{</span><span class="json2">json</span><span class="json">:</span><api class="json2">api</span><span class="json">}</span></a>
-                <li>
-                    <a href="pages/hesabım.html"><i class="fa-solid fa-user"></i>Hesabım</a>
-                </li>
                 <li><a href="pages/hakkımızda.html"><i class="fa-solid fa-circle-info"></i></i>Hakkımızda</a></li>
                 <li><a href="pages/iletisim.html"><i class="fa-solid fa-phone"></i>İletişim</a></li>
             </ul>
         </nav>
-        <section>
-            <div id="içerik1">
-                <div id="sol">
-                    <img src="images/json_api2.png">
-                    <p>JSONPlaceholder, geliştiricilerin uygulamalarını test etmek amacıyla sahte JSON verilerine erişmelerine yönelik ücretsiz bir hizmettir.</p>
-                    <p>Geliştiriciler, bir arka uç sunucusuyla etkileşimleri simüle ederek verileri almak, oluşturmak, güncellemek veya silmek için bu uç noktalara HTTP istekleri yapabilir.</p>
-                </div>
-                <div id="sağ">
-                    <img src="images/crud.jpeg">
-                </div>
-            </div>
-        </section>
-        <a href="#kayıt" class="sabit-dugme"><i class="fa-solid fa-plus"></i></a>
-        <div id="kayitOlYazisi" class="kayit-ol-yazisi">Kayıt Ol</div>
         <section id="kayıt">
             <div id="sol-kayıt">
                 <div id="sol-kayıt-alt">
@@ -46,31 +29,36 @@
                     <input class="input" type="text" id="soyisim" placeholder="Soyad"><br>
                     <input class="input" type="email" id="mail" placeholder="E-Mail"><br>
                     <input class="input" type="text" id="site" placeholder="Web Sitesi"><br>
-                    <button onclick="createUser()">Kayıt Ol</button>
+                    <button onclick="createUser()">Kaydet</button>
                 </div>
             </div>
             <div id="sağ-kayıt">
-                <table id="userTable">
-                    <tr>
-                        <th>ID</th>
-                        <th>Ad</th>
-                        <th>Soyad</th>
-                        <th>E-Mail</th>
-                        <th>Web Sitesi</th>
-                    </tr>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Ad</th>
+                            <th>Soyad</th>
+                            <th>E-Mail</th>
+                            <th>Web Sitesi</th>
+                            <th id="ort">Güncelle</th>
+                            <th id="ort">Sil</th>
+                        </tr>
+                    </thead>
+                    <tbody id="userTable">
+                        <!--<tr>
+                            <td>ID</td>
+                            <td>Ad</td>
+                            <td>Soyad</td>
+                            <td>Bölüm</td>
+                            <td>Sınıf</td>
+                            <td>Güncelle</td>
+                            <td>Sil</td>
+                        </tr>-->
+                    </tbody>
                 </table>
             </div>
         </section>
-        <footer>
-            <hr>
-            <p id="hak">Copyright © 2024 Micro-Star INT'L CO. LTD. Tüm hakları saklıdır.</p>
-            <div id="değer15">
-                <a class="son3" href="https://cookiespool.com/">Çerez Politikaları</a>
-                <a class="son3" href="https://sartlar.com/">Gizlilik Sözleşmesi</a>
-                <a class="son3" href="https://www.wonder.legal/">Kullanım Şartları</a>
-                <a class="son3" href=""><i class="fa-solid fa-earth-asia"></i>Turkey / Türkçe</a>
-            </div>
-        </footer>
-        <script src="script/create_custom.js"> </script>
+        <script src="script/crud_custom.js"> </script>
     </body>
 </html>
