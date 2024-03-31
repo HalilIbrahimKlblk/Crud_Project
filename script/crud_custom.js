@@ -16,7 +16,6 @@ function renderUser(user) {
 }
 
 function renderUsers() {
-    // Kullanıcıları tabloya ekle
     users.forEach(user => renderUser(user));
 }
 
@@ -35,7 +34,7 @@ function getUserList() {
             .then(response => response.json())
             .then(data => {
                 data.forEach(user => {
-                    user.id = ++latestId; // ID numaralandırmasını güncelle
+                    user.id = ++latestId; 
                     renderUser(user);
                     users.push(user);
                 });
@@ -221,6 +220,10 @@ function updateUser(userId) {
         alert("Kullanıcı bilgileri güncellendi.");
     } else {
         alert("Kullanıcı güncelleme işlemi iptal edildi.");
+        document.getElementById("isim").value = "";
+        document.getElementById("soyisim").value = "";
+        document.getElementById("mail").value = "";
+        document.getElementById("site").value = "";
     }
 }
 

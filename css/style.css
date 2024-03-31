@@ -61,6 +61,7 @@ ul a{
 
 #kayıt{
     width: 95%;
+    margin-top: 25px;
     margin-left: 2.5%;
     height: 600px;
     display: flex;
