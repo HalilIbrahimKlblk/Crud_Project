@@ -46,6 +46,10 @@ function getUserList() {
     }
 }
 
+function isEmailTaken(email) {
+    return users.some(user => user.email === email);
+}
+
 function createUser() {
     let isim = document.getElementById("isim").value.trim();
     let soyisim = document.getElementById("soyisim").value.trim();
@@ -62,6 +66,12 @@ function createUser() {
     var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(mail)) {
         alert("Geçersiz E-Mail adresi!");
+        return;
+    }
+
+    if (isEmailTaken(mail)) {
+        alert("Bu e-posta adresi zaten kullanılıyor.");
+        document.getElementById("mail").value = "";
         return;
     }
 
@@ -115,8 +125,6 @@ window.onload = function () {
         getUserList();
     }
 };
-
-
 
 function updateUser(userId) {
     // Seçili kullanıcının verilerini al
