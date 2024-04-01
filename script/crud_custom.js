@@ -1,6 +1,16 @@
 const table = document.getElementById("userTable");
 let latestId = 0; 
 let users = [];
+let isUpdatingMode = false; 
+
+function updateOrCreateUser() {
+    console.log(isUpdatingMode)
+    if (isUpdatingMode) {
+        updateUser(); 
+    } else {
+        createUser(); 
+    }
+}
 
 function renderUser(user) {
     table.innerHTML +=
@@ -10,7 +20,7 @@ function renderUser(user) {
         '<td>' + user.username + '</td>' +
         '<td>' + user.email + '</td>' +
         '<td>' + user.website + '</td>' +
-        '<td class="buton-ort"><button class="button-yellow" onclick="updateUser(' + user.id + ')">Güncelle</button></td>' +
+        '<td class="buton-ort"><button class="button-yellow" onclick="updateButtonClicked(' + user.id + ')">Güncelle</button></td>' +
         '<td class="buton-ort"><button class="button-red" onclick="confirmDeleteUser(' + user.id + ')">Sil</button></td>' +
         '</tr>';
 }
@@ -71,7 +81,10 @@ function createUser() {
 
     if (isEmailTaken(mail)) {
         alert("Bu e-posta adresi zaten kullanılıyor.");
+        document.getElementById("isim").value = "";
+        document.getElementById("soyisim").value = "";
         document.getElementById("mail").value = "";
+        document.getElementById("site").value = "";
         return;
     }
 
@@ -128,111 +141,81 @@ window.onload = function () {
 
 function updateUser(userId) {
     // Seçili kullanıcının verilerini al
-    let selectedUser = null;
+    let selectedUserIndex = -1;
     const tableRows = document.getElementById("userTable").getElementsByTagName("tr");
     for (let i = 0; i < tableRows.length; i++) {
         const row = tableRows[i];
         const rowData = row.getElementsByTagName("td");
-        const id = parseInt(rowData[0].innerText); // ID'yi alırken integer'a çeviriyoruz
+        const id = parseInt(rowData[0].innerText);
 
         if (id === userId) {
-            selectedUser = {
-                id: id,
-                name: rowData[1].textContent,
-                username: rowData[2].textContent,
-                email: rowData[3].textContent,
-                website: rowData[4].textContent
-            };
+            selectedUserIndex = i;
             break;
         }
     }
 
-    if (selectedUser === null) {
+    if (selectedUserIndex === -1) {
         alert("Kullanıcı bulunamadı.");
         return;
     }
 
-    // Form alanlarına mevcut kullanıcı bilgilerini doldur
-    document.getElementById("isim").value = selectedUser.name;
-    document.getElementById("soyisim").value = selectedUser.username;
-    document.getElementById("mail").value = selectedUser.email;
-    document.getElementById("site").value = selectedUser.website;
+    const newName = document.getElementById("isim").value.trim();
+    const newUsername = document.getElementById("soyisim").value.trim();
+    const newEmail = document.getElementById("mail").value.trim();
+    const newWebsite = document.getElementById("site").value.trim();
 
-    // Güncelleme işlemini onaylamak için kullanıcıya bir uyarı göster
-    if (confirm("Kullanıcı bilgilerini güncellemek istediğinize emin misiniz?")) {
-        // Kullanıcının güncellediği bilgileri al
-        const newName = document.getElementById("isim").value.trim();
-        const newUsername = document.getElementById("soyisim").value.trim();
-        const newEmail = document.getElementById("mail").value.trim();
-        const newWebsite = document.getElementById("site").value.trim();
-
-        // Girişlerin geçerliliğini kontrol et
-        if (newName === "" || newUsername === "" || newEmail === "" || newWebsite === "") {
-            alert("Tüm alanları doldurun!");
-            return;
-        }
-
-        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(newEmail)) {
-            alert("Geçersiz E-Mail adresi!");
-            return;
-        }
-
-        var websiteRegex = /^(https?:\/\/)?([\w-]+\.)+[\w-]+(\/\S*)?$/i;
-        if (newWebsite !== "" && !websiteRegex.test(newWebsite)) {
-            alert("Lütfen geçerli bir web sitesi URL'si girin.");
-            return;
-        }
-
-        // İsim ve soyisim için geçerlilik kontrolü
-        if (!isValidName(newName)) {
-            alert("Lütfen geçerli bir isim girin.");
-            return;
-        }
-        if (!isValidName(newUsername)) {
-            alert("Lütfen geçerli bir soyisim girin.");
-            return;
-        }
-
-        // Kullanıcının satırını bul ve güncelle
-        const userTable = document.getElementById("userTable");
-        const rows = userTable.getElementsByTagName("tr");
-        for (let i = 0; i < rows.length; i++) {
-            const row = rows[i];
-            const rowData = row.getElementsByTagName("td");
-            const id = parseInt(rowData[0].innerText); // ID'yi alırken integer'a çeviriyoruz
-
-            if (id === userId) {
-                rowData[1].textContent = newName;
-                rowData[2].textContent = newUsername;
-                rowData[3].textContent = newEmail;
-                rowData[4].textContent = newWebsite;
-                break;
-            }
-        }
-
-        // Güncellenmiş kullanıcı bilgilerini local storage'a kaydet
-        const updatedUser = {
-            id: userId,
-            name: newName,
-            username: newUsername,
-            email: newEmail,
-            website: newWebsite
-        };
-        localStorage.setItem("user_" + userId, JSON.stringify(updatedUser));
-
-        // Kullanıcı listesini güncelleyin ve yerel depolamaya kaydedin
-        users = users.map(user => user.id === userId ? updatedUser : user);
-        saveUsers();
-
-        alert("Kullanıcı bilgileri güncellendi.");
-    } else {
-        alert("Kullanıcı güncelleme işlemi iptal edildi.");
-        document.getElementById("isim").value = "";
-        document.getElementById("soyisim").value = "";
-        document.getElementById("mail").value = "";
-        document.getElementById("site").value = "";
+    // Girişlerin geçerliliğini kontrol et
+    if (newName === "" || newUsername === "" || newEmail === "" || newWebsite === "") {
+        alert("Tüm alanları doldurun!");
+        return;
     }
+
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(newEmail)) {
+        alert("Geçersiz E-Mail adresi!");
+        return;
+    }
+
+    var websiteRegex = /^(https?:\/\/)?([\w-]+\.)+[\w-]+(\/\S*)?$/i;
+    if (newWebsite !== "" && !websiteRegex.test(newWebsite)) {
+        alert("Lütfen geçerli bir web sitesi URL'si girin.");
+        return;
+    }
+
+    // İsim ve soyisim için geçerlilik kontrolü
+    if (!isValidName(newName)) {
+        alert("Lütfen geçerli bir isim girin.");
+        return;
+    }
+    if (!isValidName(newUsername)) {
+        alert("Lütfen geçerli bir soyisim girin.");
+        return;
+    }
+
+    // Kullanıcının satırını bul ve güncelle
+    const row = tableRows[selectedUserIndex];
+    const rowData = row.getElementsByTagName("td");
+
+    rowData[1].textContent = newName;
+    rowData[2].textContent = newUsername;
+    rowData[3].textContent = newEmail;
+    rowData[4].textContent = newWebsite;
+
+    // Güncellenmiş kullanıcı bilgilerini local storage'a kaydet
+    const updatedUser = {
+        id: userId,
+        name: newName,
+        username: newUsername,
+        email: newEmail,
+        website: newWebsite
+    };
+    localStorage.setItem("user_" + userId, JSON.stringify(updatedUser));
+
+    // Kullanıcı listesini güncelleyin ve yerel depolamaya kaydedin
+    users = users.map(user => user.id === userId ? updatedUser : user);
+    saveUsers();
+    alert("Kullanıcı bilgileri güncellendi.");
+    isUpdatingMode = false; // Güncelleme modunu kapat
 }
 
 function confirmDeleteUser(userId) {
@@ -291,4 +274,21 @@ function removeFromTable(userId) {
 
 function showNotification(message) {
     alert(message);
+}
+
+function updateButtonClicked(userId) {
+    // Kullanıcının güncellediği bilgileri form alanlarına doldur
+    const selectedUser = users.find(user => user.id === userId);
+    document.getElementById("isim").value = selectedUser.name;
+    document.getElementById("soyisim").value = selectedUser.username;
+    document.getElementById("mail").value = selectedUser.email;
+    document.getElementById("site").value = selectedUser.website;
+    isUpdatingMode = true; // Güncelleme modunu etkinleştir
+}
+
+function newUserButton(){
+    document.getElementById("isim").value = "";
+    document.getElementById("soyisim").value = "";
+    document.getElementById("mail").value = "";
+    document.getElementById("site").value = "";
 }

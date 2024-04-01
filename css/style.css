@@ -88,7 +88,7 @@ ul a{
 #sol-kayıt-alt{
     border: #112c66 2px solid;
     background-color: rgb(190, 190, 190);
-    height: 410px;
+    height: 453px;
     margin-left: 5%;
     width: 90%;
     border-radius: 2%;
@@ -111,7 +111,7 @@ input{
 button{
     margin-left: 5%;
     margin-right: 5%;
-    margin-top: 10%;
+    margin-top: 7%;
     font-size: 18px;
     padding: 10px 30px;
     width: 50%;
@@ -126,7 +126,7 @@ button{
 button:hover{
     margin-left: 5%;
     margin-right: 5%;
-    margin-top: 10%;
+    margin-top: 7%;
     font-size: 18px;
     padding: 10px 30px;
     width: 50%;
@@ -202,4 +202,33 @@ td .button-yellow:hover {
 
 .buton-ort{
     padding-right: 20px;
+}
+
+.new{
+    margin-top: 25px;
+    margin-left: 5%;
+    margin-right: 5%;
+    font-size: 18px;
+    padding: 10px 30px;
+    width: 50%;
+    border: #112c66 1px solid;
+    border-radius: 5px;
+    background-color: #22438C;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.new:hover{
+    margin-top: 25px;
+    margin-left: 5%;
+    margin-right: 5%;
+    font-size: 18px;
+    padding: 10px 30px;
+    width: 50%;
+    border: #112c66 1px solid;
+    border-radius: 5px;
+    background-color: #112c66;
+    color: white;
+    cursor: pointer;
 }
