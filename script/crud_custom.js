@@ -139,26 +139,9 @@ window.onload = function () {
     }
 };
 
-function updateUser(userId) {
+function updateUser() {
     // Seçili kullanıcının verilerini al
-    let selectedUserIndex = -1;
-    const tableRows = document.getElementById("userTable").getElementsByTagName("tr");
-    for (let i = 0; i < tableRows.length; i++) {
-        const row = tableRows[i];
-        const rowData = row.getElementsByTagName("td");
-        const id = parseInt(rowData[0].innerText);
-
-        if (id === userId) {
-            selectedUserIndex = i;
-            break;
-        }
-    }
-
-    if (selectedUserIndex === -1) {
-        alert("Kullanıcı bulunamadı.");
-        return;
-    }
-
+    const userId = parseInt(document.getElementById("userId").value);
     const newName = document.getElementById("isim").value.trim();
     const newUsername = document.getElementById("soyisim").value.trim();
     const newEmail = document.getElementById("mail").value.trim();
@@ -193,13 +176,27 @@ function updateUser(userId) {
     }
 
     // Kullanıcının satırını bul ve güncelle
-    const row = tableRows[selectedUserIndex];
-    const rowData = row.getElementsByTagName("td");
+    const tableRows = document.getElementById("userTable").getElementsByTagName("tr");
+    let selectedUserIndex = -1;
+    for (let i = 0; i < tableRows.length; i++) {
+        const row = tableRows[i];
+        const rowData = row.getElementsByTagName("td");
+        const id = parseInt(rowData[0].innerText);
 
-    rowData[1].textContent = newName;
-    rowData[2].textContent = newUsername;
-    rowData[3].textContent = newEmail;
-    rowData[4].textContent = newWebsite;
+        if (id === userId) {
+            selectedUserIndex = i;
+            rowData[1].textContent = newName;
+            rowData[2].textContent = newUsername;
+            rowData[3].textContent = newEmail;
+            rowData[4].textContent = newWebsite;
+            break;
+        }
+    }
+
+    if (selectedUserIndex === -1) {
+        alert("Kullanıcı bulunamadı.");
+        return;
+    }
 
     // Güncellenmiş kullanıcı bilgilerini local storage'a kaydet
     const updatedUser = {
@@ -215,8 +212,13 @@ function updateUser(userId) {
     users = users.map(user => user.id === userId ? updatedUser : user);
     saveUsers();
     alert("Kullanıcı bilgileri güncellendi.");
+    document.getElementById("isim").value = "";
+    document.getElementById("soyisim").value = "";
+    document.getElementById("mail").value = "";
+    document.getElementById("site").value = "";
     isUpdatingMode = false; // Güncelleme modunu kapat
 }
+
 
 function confirmDeleteUser(userId) {
     // Kullanıcıyı silme işlemini onayla
@@ -283,7 +285,12 @@ function updateButtonClicked(userId) {
     document.getElementById("soyisim").value = selectedUser.username;
     document.getElementById("mail").value = selectedUser.email;
     document.getElementById("site").value = selectedUser.website;
-    isUpdatingMode = true; // Güncelleme modunu etkinleştir
+
+    // Gizli alanı güncelle
+    document.getElementById("userId").value = userId;
+
+    // Güncelleme modunu etkinleştir
+    isUpdatingMode = true; 
 }
 
 function newUserButton(){
@@ -291,4 +298,9 @@ function newUserButton(){
     document.getElementById("soyisim").value = "";
     document.getElementById("mail").value = "";
     document.getElementById("site").value = "";
+    isUpdatingMode = false;
+}
+
+function isValidName(name) {
+    return /^[a-zA-ZğüşıöçĞÜŞİÖÇ\s']{2,20}$/.test(name);
 }
