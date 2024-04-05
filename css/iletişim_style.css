@@ -197,3 +197,24 @@ hr{
     margin: 10px;
     margin-left: 20px;
 }
+
+@media only screen and (max-width: 767px) {
+    nav ul {
+        display: flex; /* Menü öğelerini yatay olarak düzenle */
+        flex-direction: column; /* Menü öğelerini dikey olarak sırala */
+        align-items: center; /* Öğeleri dikeyde merkezle */
+    }
+    nav ul li {
+        margin-bottom: 10px; /* Öğeler arası boşluk */
+    }
+    nav ul li a {
+        width: auto; /* Menü öğelerinin genişliğini otomatik yap */
+        padding: 25px; /* Öğe içi boşluklar */
+    }
+}
+
+.container{
+    width: 100%;
+    max-width: 100%;
+    margin: 0px auto;
+}

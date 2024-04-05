@@ -4,6 +4,12 @@
     font-family: 'Open-Sans',sans-serif;
 }
 
+.container{
+    width: 100%;
+    max-width: 100%;
+    margin: 0px auto;
+}
+
 ul{
     list-style: none;
     background: #22438C;
@@ -80,7 +86,6 @@ ul a{
     width: 67.5%;
     margin-left: 5%;
     height: 498px;
-    overflow: auto;
     margin-bottom: 10px;
 }
 
@@ -232,3 +237,82 @@ td .button-yellow:hover {
     color: white;
     cursor: pointer;
 }
+
+@media screen and (max-width: 768px) {
+
+    #kayıt {
+      flex-direction: column;
+    }
+  
+    #sol-kayıt{
+        width: 80%;
+    }
+
+    #sol-kayıt button{
+        width: auto;
+    }
+
+    #sol-kayıt input{
+        margin-top: 25px;
+    }
+
+    #sağ-kayıt {
+      width: 100%; 
+      margin: 20px auto; 
+    }
+  
+    table {
+      width: 100%; /* Tabloyu tam genişlikte yap */
+      margin-top: 10px;
+    }
+    
+  }
+  
+@media only screen and (max-width: 767px) {
+    nav ul {
+        display: flex; /* Menü öğelerini yatay olarak düzenle */
+        flex-direction: column; /* Menü öğelerini dikey olarak sırala */
+        align-items: center; /* Öğeleri dikeyde merkezle */
+    }
+    nav ul li {
+        margin-bottom: 10px; /* Öğeler arası boşluk */
+    }
+    nav ul li a {
+        width: auto; /* Menü öğelerinin genişliğini otomatik yap */
+        padding: 25px; /* Öğe içi boşluklar */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    table {
+        width: 100%; 
+        margin-top: 30px; 
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+        
+    table th, table td {
+        display: block; 
+        width: auto; 
+        text-align: center; 
+        padding: 8px 0; 
+    }
+
+    table th {
+        background-color: #22438C; 
+        color: white; 
+    }
+      
+    table td:before {
+        content: attr(data-label);
+        font-weight: bold; 
+    }
+}
+
+@media screen and (min-width: 769px) {
+    #sağ-kayıt{
+        overflow: auto;
+    }
+  }
+  
+
