@@ -87,6 +87,7 @@ ul a{
     margin-left: 5%;
     height: 498px;
     margin-bottom: 10px;
+    margin-top: 160px;
 }
 
 
@@ -314,5 +315,82 @@ td .button-yellow:hover {
         overflow: auto;
     }
   }
-  
+
+.search{
+    margin-left: 672px;
+    margin-right: 5%;
+    margin-top: -585px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: #112c66 2px solid;
+    background-color: rgb(190, 190, 190);
+    border-radius: 5px;
+    height: 70px;
+    width: 639px;
+}
+
+.new2{
+    background-color: #22438C;
+    margin: 0;
+    margin-right: 5%;
+    width: 30%;
+}
+
+.new2:hover{
+    background-color: #112c66;
+    margin: 0;
+    margin-right: 5%;
+    width: 30%;
+}
+
+.input2{
+    margin: 0;
+    width: 40%;
+    margin-left: 5%;
+}
+
+.pagination-container {
+    bottom: 70px; /* Sayfanın altından 20px yukarıda */
+    width: 60%;
+    text-align: center;
+    padding: 10px 0;
+    background-color: transparent;
+    position: fixed; /* Sayfanın altında sabitle */
+    left: 34%; /* Sayfanın solundan %20 oranında uzaklıkta */
+}
+
+.pagination-container button {
+    padding: 5px; /* Yeterli alan sağlamak için padding */
+    margin: 0 2px; /* Her iki yana az miktarda marj uygula */
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: black;
+    width: 30px;
+    height: 30px;
+    line-height: 20px;
+    text-align: center;
+    font-size: 12px;
+}
+
+.pagination-container button.special {
+    padding: 1px 1px; /* Özel buton için de padding ayarla */
+    margin-right: 1px; /* Özel buton için sağdaki boşluğu azalt */
+}
+
+.pagination-container button:hover {
+    background-color: #e2e2e2;
+}
+
+.pagination-container button:hover {
+    background-color: #e2e2e2;
+}
+
+.pagination-container button.special {
+    background: none;
+    border: none;
+    font-weight: bold;
+    color: black;
+}
 

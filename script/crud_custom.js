@@ -2,6 +2,8 @@ const table = document.getElementById("userTable");
 let latestId = 0; 
 let users = [];
 let isUpdatingMode = false; 
+let currentPage = 1;
+const itemsPerPage = 5;
 
 function updateOrCreateUser() {
     console.log(isUpdatingMode)
@@ -26,7 +28,15 @@ function renderUser(user) {
 }
 
 function renderUsers() {
-    users.forEach(user => renderUser(user));
+    // Kullanıcıları tersine çevirerek en son eklenenden ilk eklenene doğru sırala
+    users.sort((a, b) => b.id - a.id);
+    const start = (currentPage - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    const usersToDisplay = users.slice(start, end);
+
+    table.innerHTML = ""; // Clear the table first
+    usersToDisplay.forEach(user => renderUser(user));
+    renderPaginationControls();
 }
 
 function saveUsers() {
@@ -117,9 +127,9 @@ function createUser() {
         website: site
     };
 
-    users.push(user);
+    users.unshift(user);
     saveUsers();
-    renderUser(user);
+    renderUsers(); // Tabloyu yeniden oluşturarak kullanıcıyı göster
     alert("Kullanıcı oluşturuldu.");
 
     document.getElementById("isim").value = "";
@@ -219,18 +229,6 @@ function updateUser() {
     isUpdatingMode = false; // Güncelleme modunu kapat
 }
 
-
-function confirmDeleteUser(userId) {
-    // Kullanıcıyı silme işlemini onayla
-    if (confirm("Kullanıcıyı silmek istediğinize emin misiniz?")) {
-        // Onay alındıysa deleteUser fonksiyonunu çağır
-        deleteUser(userId);
-    } else {
-        // Silme işlemi iptal edildiğinde uyarı ver
-        alert("Kullanıcı silme işlemi iptal edildi.");
-    }
-}
-
 function deleteUserFromLocalStorage(userId) {
     let storedUsers = JSON.parse(localStorage.getItem("users"));
     if (storedUsers) {
@@ -272,6 +270,10 @@ function removeFromTable(userId) {
             break;
         }
     }
+
+    // Kullanıcıyı users dizisinden de kaldır
+    users = users.filter(user => user.id !== userId);
+    saveUsers(); // Yerel depolamayı güncelle
 }
 
 function showNotification(message) {
@@ -303,4 +305,102 @@ function newUserButton(){
 
 function isValidName(name) {
     return /^[a-zA-ZğüşıöçĞÜŞİÖÇ\s']{2,20}$/.test(name);
+}
+
+function searchUser() {
+    const searchValue = document.getElementById("searchInput").value.trim().toLowerCase();
+    
+    // Boş arama yapılırsa uyarı ver
+    if (searchValue === "") {
+        alert("Lütfen bir isim girin.");
+        return;
+    }
+
+    // Tüm kullanıcılar için arama yap
+    const foundUsers = users.filter(user => user.name.toLowerCase().includes(searchValue));
+
+    if (foundUsers.length === 0) {
+        alert("Kullanıcı bulunamadı.");
+        return;
+    }
+
+    // Kullanıcı bulunduysa, tüm sayfaları göster
+    table.innerHTML = ""; // Tabloyu temizle
+
+    foundUsers.forEach(user => renderUser(user));
+
+    // Arama sonuçlarına göre pagination yeniden oluştur
+    currentPage = 1;
+    renderPaginationControls();
+}
+
+function renderPaginationControls() {
+    const paginationDiv = document.getElementById("pagination");
+    const totalPages = Math.ceil(users.length / itemsPerPage);
+    paginationDiv.innerHTML = '';
+
+    // Önceki sayfa butonu
+    if (currentPage > 1) {
+        const prevButton = document.createElement("button");
+        prevButton.innerHTML = '&laquo;';
+        prevButton.onclick = function() { navigatePage(-1); };
+        paginationDiv.appendChild(prevButton);
+    }
+
+    // Mevcut sayfa numarası
+    const pageButton = document.createElement("button");
+    pageButton.innerText = currentPage;
+    pageButton.classList.add('active');
+    paginationDiv.appendChild(pageButton);
+
+    // Sonraki sayfa butonu
+    if (currentPage < totalPages) {
+        const nextButton = document.createElement("button");
+        nextButton.innerHTML = '&raquo;';
+        nextButton.onclick = function() { navigatePage(1); };
+        paginationDiv.appendChild(nextButton);
+    }
+}
+
+function navigatePage(change) {
+    currentPage += change;
+    currentPage = Math.min(Math.max(currentPage, 1), Math.ceil(users.length / itemsPerPage));
+    renderUsers();
+}
+
+function confirmDeleteUser(userId) {
+    if (confirm("Bu kullanıcıyı silmek istediğinizden emin misiniz?")) {
+        users = users.filter(user => user.id !== userId);
+        saveUsers();
+        alert("Kullanıcı silindi.");
+        maintainFullPage();
+    }
+}
+
+function maintainFullPage() {
+    const totalUsers = users.length;
+    const totalPages = Math.ceil(totalUsers / itemsPerPage);
+    const lastPageUserCount = totalUsers % itemsPerPage;
+
+    if (lastPageUserCount === 0 && totalPages < currentPage) {
+        currentPage = totalPages; // Eğer son sayfa boşsa bir önceki sayfaya geç
+    } else if (lastPageUserCount !== 0 && lastPageUserCount < itemsPerPage) {
+        // Son sayfa dolu değilse ve sonraki sayfada kullanıcılar varsa, eksik kullanıcıları doldur
+        fillCurrentPage();
+    }
+    renderUsers();
+}
+
+function fillCurrentPage() {
+    const start = (currentPage - 1) * itemsPerPage;
+    const usersToDisplay = users.slice(start, start + itemsPerPage);
+
+    if (usersToDisplay.length < itemsPerPage) {
+        const needed = itemsPerPage - usersToDisplay.length;
+        const nextPageUsers = users.slice(start + itemsPerPage, start + itemsPerPage + needed);
+        usersToDisplay.push(...nextPageUsers);
+    }
+
+    table.innerHTML = ""; // Tabloyu temizle
+    usersToDisplay.forEach(user => renderUser(user));
 }
