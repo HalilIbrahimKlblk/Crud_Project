@@ -119,6 +119,13 @@ function createUser() {
         return /^[a-zA-ZğüşıöçĞÜŞİÖÇ\s']{2,20}$/.test(name);
     }
 
+    // Mevcut kullanıcıların ID'lerini al
+    const userIds = users.map(user => user.id);
+
+    // En büyük ID'yi bul ve bir ekleyerek yeni bir ID oluştur
+    const maxUserId = Math.max(...userIds);
+    const newUserId = maxUserId + 1;
+
     let user = {
         id: ++latestId,
         name: isim,
